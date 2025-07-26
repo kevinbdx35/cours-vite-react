@@ -14,7 +14,6 @@ export default defineConfig({
         manualChunks: {
           vendor: ['react', 'react-dom'],
           ui: ['@shopify/polaris'],
-          animations: ['framer-motion'],
           markdown: ['react-markdown', 'react-syntax-highlighter']
         }
       }

@@ -2626,7 +2626,6 @@ src/
               code: `// src/components/TaskCard.jsx
 import { Card, Button, Badge, Text } from '@shopify/polaris';
 import { DeleteIcon, EditIcon } from '@shopify/polaris-icons';
-import { motion } from 'framer-motion';
 
 function TaskCard({ task, onEdit, onDelete, onToggle }) {
   const priorityColors = {
@@ -2636,12 +2635,7 @@ function TaskCard({ task, onEdit, onDelete, onToggle }) {
   };
 
   return (
-    <motion.div
-      layout
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-    >
+    <div className="fade-in">
       <Card>
         <div style={{ padding: '1rem' }}>
           <div style={{ 
@@ -2698,7 +2692,7 @@ function TaskCard({ task, onEdit, onDelete, onToggle }) {
           </div>
         </div>
       </Card>
-    </motion.div>
+    </div>
   );
 }
 
@@ -3144,7 +3138,6 @@ La page Dashboard sera le cœur de notre application. Elle intégrera :
 import { useState } from 'react';
 import { Page, Layout, Card, Button, Modal, EmptyState, Text, Badge, ButtonGroup } from '@shopify/polaris';
 import { PlusIcon, SearchIcon } from '@shopify/polaris-icons';
-import { AnimatePresence, motion } from 'framer-motion';
 import useTaskStore from '../store/taskStore';
 import TaskCard from '../components/TaskCard';
 import TaskForm from '../components/TaskForm';
@@ -3278,17 +3271,15 @@ function Dashboard() {
               gap: '1rem',
               gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))'
             }}>
-              <AnimatePresence>
-                {tasks.map(task => (
-                  <TaskCard
-                    key={task.id}
-                    task={task}
-                    onEdit={handleEdit}
-                    onDelete={deleteTask}
-                    onToggle={toggleTask}
-                  />
-                ))}
-              </AnimatePresence>
+              {tasks.map(task => (
+                <TaskCard
+                  key={task.id}
+                  task={task}
+                  onEdit={handleEdit}
+                  onDelete={deleteTask}
+                  onToggle={toggleTask}
+                />
+              ))}
             </div>
           )}
         </Layout.Section>
@@ -3501,7 +3492,6 @@ export default defineConfig({
           vendor: ['react', 'react-dom'],
           ui: ['@shopify/polaris'],
           router: ['react-router-dom'],
-          animation: ['framer-motion'],
           store: ['zustand']
         }
       }
