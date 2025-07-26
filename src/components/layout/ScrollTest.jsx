@@ -17,7 +17,7 @@ function ScrollTest() {
         Cette page contient beaucoup de contenu pour tester que le scroll vertical fonctionne correctement dans tous les layouts.
       </Text>
 
-      {testItems.map((item, index) => (
+      {testItems.map((item) => (
         <div
           key={item.id}
           className="scroll-test-item"
