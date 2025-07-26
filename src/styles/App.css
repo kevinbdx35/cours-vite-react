@@ -1,0 +1,209 @@
+.app {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #fafafa;
+}
+
+.main-content {
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Responsive navigation adjustments */
+@media (max-width: 1024px) {
+  .main-content {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 0.75rem 0.5rem;
+  }
+
+  /* Adjust Polaris Frame for mobile */
+  .Polaris-Frame {
+    --p-frame-offset: 0;
+  }
+
+  .Polaris-Frame__Navigation {
+    position: fixed !important;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .Polaris-Frame__Navigation--isNavigationCollapsed {
+    transform: translateX(0);
+  }
+
+  .Polaris-Page {
+    padding: 1rem 0.5rem;
+  }
+
+  .Polaris-Page__Header {
+    margin-bottom: 1rem;
+  }
+
+  .Polaris-Layout__Section {
+    margin-bottom: 1rem;
+  }
+
+  .Polaris-Card {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .Polaris-Stack {
+    flex-wrap: wrap;
+  }
+
+  .Polaris-Stack--distributionFillEvenly {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding: 0.5rem 0.25rem;
+  }
+
+  .Polaris-Page {
+    padding: 0.75rem 0.25rem;
+  }
+
+  .Polaris-Page__Header {
+    margin-bottom: 0.75rem;
+  }
+
+  .Polaris-Page-Header__Title {
+    font-size: 1.5rem !important;
+    line-height: 1.3;
+  }
+
+  .Polaris-Page-Header__Subtitle {
+    font-size: 0.9rem !important;
+    margin-top: 0.25rem;
+  }
+
+  .Polaris-Layout__Section {
+    margin-bottom: 0.75rem;
+  }
+
+  .Polaris-Card__Section {
+    padding: 1rem 0.75rem;
+  }
+
+  .Polaris-Button {
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+
+  .Polaris-Button--sizeLarge {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .Polaris-Stack--spacingLoose {
+    gap: 0.75rem;
+  }
+
+  .Polaris-Stack--spacingTight {
+    gap: 0.25rem;
+  }
+
+  /* Course-specific mobile optimizations */
+  .Polaris-ProgressBar {
+    height: 6px;
+  }
+
+  .Polaris-Badge {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  /* Interactive demo mobile fixes */
+  .Polaris-TextField__Input[type="text"] {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+
+  /* Code block mobile scrolling */
+  pre {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Touch targets for better mobile UX */
+  button, 
+  .Polaris-Button,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .app {
+    background-color: #1a1a1a;
+    color: #e1e1e1;
+  }
+
+  .lesson-theory code {
+    background-color: #2d2d2d;
+    color: #e1e1e1;
+  }
+
+  .lesson-theory blockquote {
+    background-color: #0f2419;
+    color: #e1e1e1;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .lesson-theory blockquote {
+    border-left-width: 6px;
+    border-left-color: #000;
+  }
+
+  .Polaris-Button--primary {
+    border: 2px solid #000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .Polaris-Frame__Navigation,
+  .Polaris-Button,
+  .main-content nav {
+    display: none !important;
+  }
+
+  .main-content {
+    padding: 0;
+  }
+
+  .Polaris-Card {
+    border: 1px solid #000;
+    margin-bottom: 1rem;
+    break-inside: avoid;
+  }
+
+  pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+}
