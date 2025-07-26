@@ -26,10 +26,9 @@ function LessonSelector() {
             const isCompleted = isLessonCompleted(currentModuleIndex, index)
             
             return (
-              <motion.div
+              <div
                 key={lesson.id}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                className="lesson-item"
               >
                 <div
                   onClick={() => navigateToLesson(currentModuleIndex, index)}
@@ -49,13 +48,9 @@ function LessonSelector() {
                           {index + 1}. {lesson.title}
                         </Text>
                         {isCompleted && (
-                          <motion.div
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            transition={{ type: 'spring', stiffness: 300 }}
-                          >
+                          <div className="check-icon">
                             <CheckIcon color="success" />
-                          </motion.div>
+                          </div>
                         )}
                       </div>
                       <Text variant="caption" color="subdued">
@@ -66,7 +61,7 @@ function LessonSelector() {
                     <Badge>{lesson.duration}</Badge>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             )
           })}
         </div>

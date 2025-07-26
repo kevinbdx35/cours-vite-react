@@ -88,33 +88,6 @@ function AdvancedLayout({
     </Modal>
   )
 
-  // Animation du contenu principal
-  const contentVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 20,
-      scale: 0.98
-    },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      scale: 1,
-      transition: { 
-        duration: 0.4, 
-        ease: "easeOut",
-        staggerChildren: 0.1
-      }
-    },
-    exit: { 
-      opacity: 0, 
-      y: -20,
-      scale: 0.98,
-      transition: { 
-        duration: 0.3, 
-        ease: "easeIn" 
-      }
-    }
-  }
 
   // Sélection du composant de layout
   const LayoutComponent = layoutType === 'course' ? CourseLayout : MainLayout
@@ -126,23 +99,13 @@ function AdvancedLayout({
         onNavigate={onNavigate}
         {...layoutProps}
       >
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentPage}
-            variants={contentVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-          >
-            {children}
-          </motion.div>
-        </AnimatePresence>
+        <div className="content-wrapper" key={currentPage}>
+          {children}
+        </div>
       </LayoutComponent>
 
       {/* Overlays */}
-      <AnimatePresence>
-        {loadingMarkup}
-      </AnimatePresence>
+      {loadingMarkup}
       
       {toastMarkup}
       {modalMarkup}

@@ -31,10 +31,9 @@ function ModuleSelector() {
             const isActive = index === currentModuleIndex
             
             return (
-              <motion.div
+              <div
                 key={module.id}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                className="module-selector-item"
               >
                 <div
                   onClick={() => navigateToLesson(index, 0)}
@@ -67,7 +66,7 @@ function ModuleSelector() {
                     <Badge>{module.lessons.length} leçons</Badge>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             )
           })}
         </div>

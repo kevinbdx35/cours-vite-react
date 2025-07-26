@@ -18,11 +18,9 @@ function ScrollTest() {
       </Text>
 
       {testItems.map((item, index) => (
-        <motion.div
+        <div
           key={item.id}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: index * 0.1 }}
+          className="scroll-test-item"
           style={{ marginBottom: '1rem' }}
         >
           <Card>
@@ -36,7 +34,7 @@ function ScrollTest() {
               <Button>Action {item.id}</Button>
             </div>
           </Card>
-        </motion.div>
+        </div>
       ))}
 
       <Card>

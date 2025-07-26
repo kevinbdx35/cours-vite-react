@@ -58,9 +58,8 @@ function ModuleProgress() {
         </Text>
         
         {/* Progression Globale */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+        <div
+          className="progress-global"
           style={{
             padding: '1rem',
             backgroundColor: '#f8fffe',
@@ -88,7 +87,7 @@ function ModuleProgress() {
               🎯 {totalLessons - completedCount} leçons restantes
             </Text>
           </div>
-        </motion.div>
+        </div>
 
         {/* Progression par Module */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
@@ -99,12 +98,9 @@ function ModuleProgress() {
             const isActive = moduleIndex === currentModuleIndex
             
             return (
-              <motion.div
+              <div
                 key={module.id}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: moduleIndex * 0.1 }}
-                whileHover={{ scale: 1.02 }}
+                className="module-item"
                 style={{
                   padding: '0.75rem',
                   backgroundColor: isActive ? '#f8fffe' : '#fafbfb',
@@ -115,15 +111,15 @@ function ModuleProgress() {
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                  <motion.div
-                    whileHover={{ rotate: 10 }}
+                  <div
+                    className="module-icon"
                     style={{ 
                       fontSize: '1.5rem',
                       filter: status === 'not-started' ? 'grayscale(50%)' : 'none'
                     }}
                   >
                     {module.icon}
-                  </motion.div>
+                  </div>
                   
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.25rem' }}>
@@ -148,11 +144,10 @@ function ModuleProgress() {
                       overflow: 'hidden',
                       marginBottom: '0.25rem'
                     }}>
-                      <motion.div
-                        initial={{ width: 0 }}
-                        animate={{ width: `${progress}%` }}
-                        transition={{ duration: 0.8, delay: moduleIndex * 0.1 }}
+                      <div
+                        className="progress-bar"
                         style={{
+                          width: `${progress}%`,
                           height: '100%',
                           backgroundColor: getStatusColor(status),
                           borderRadius: '2px'
@@ -171,23 +166,21 @@ function ModuleProgress() {
                       {status === 'completed' && (
                         <>
                           <span style={{ color: '#e1e5e9' }}>•</span>
-                          <motion.div
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            transition={{ type: 'spring', stiffness: 300 }}
+                          <div
+                            className="completion-badge"
                             style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}
                           >
                             <CheckIcon color="success" />
                             <Text variant="caption" color="success">
                               Terminé
                             </Text>
-                          </motion.div>
+                          </div>
                         </>
                       )}
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             )
           })}
         </div>

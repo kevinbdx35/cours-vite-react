@@ -204,9 +204,8 @@ function Header({
           <div style={{ position: 'relative' }}>
             <BellIcon />
             {unreadCount > 0 && (
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
+              <div
+                className="notification-badge"
                 style={{
                   position: 'absolute',
                   top: '-4px',
@@ -224,7 +223,7 @@ function Header({
                 }}
               >
                 {unreadCount}
-              </motion.div>
+              </div>
             )}
           </div>
         </Button>
@@ -243,17 +242,15 @@ function Header({
         
         <div style={{ maxHeight: '300px', overflowY: 'auto' }}>
           {notifications.map(notification => (
-            <motion.div
+            <div
               key={notification.id}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
+              className="notification-item"
               style={{
                 padding: '1rem',
                 borderBottom: '1px solid #f6f6f7',
                 backgroundColor: notification.read ? 'transparent' : '#f8fffe',
                 cursor: 'pointer'
               }}
-              whileHover={{ backgroundColor: '#f6f6f7' }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.25rem' }}>
                 <span style={{ 
@@ -287,7 +284,7 @@ function Header({
                   marginTop: '0.5rem'
                 }} />
               )}
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

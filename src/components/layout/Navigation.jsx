@@ -22,30 +22,22 @@ function Navigation({ currentPage, onNavigate }) {
   ]
 
   const topBarMarkup = (
-    <motion.div
-      initial={{ y: -50, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.3 }}
-    >
+    <div className="topbar-enter">
       <TopBar 
         showNavigationToggle={false}
       />
-    </motion.div>
+    </div>
   )
 
   const navigationMarkup = (
-    <motion.div
-      initial={{ x: -250 }}
-      animate={{ x: 0 }}
-      transition={{ type: 'spring', stiffness: 100, damping: 20 }}
-    >
+    <div className="navigation-enter">
       <PolarisNavigation location="/">
         <PolarisNavigation.Section
           items={navigationItems}
           fill
         />
       </PolarisNavigation>
-    </motion.div>
+    </div>
   )
 
   return (
