@@ -34,12 +34,13 @@ function AppContent() {
           <HomePage onStartCourse={handleStartCourse} />
         </MainLayout>
       ) : (
-        <CourseLayout 
+        <MainLayout 
           currentPage="course" 
           onNavigate={handleNavigate}
+          showNavigation={true}
         >
           <CoursePage onBackToHome={handleBackToHome} />
-        </CourseLayout>
+        </MainLayout>
       )}
     </>
   )
