@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/vite-react-course/', // Remplacez par le nom de votre repo GitHub
+  base: '/cours-vite-react/', // Nom du repo GitHub
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
