@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { TopBar, TextField, Button, Popover, ActionList, Badge } from '@shopify/polaris'
 import { SearchIcon, BellIcon, QuestionCircleIcon, SettingsIcon } from '@shopify/polaris-icons'
-import { useCourse } from '../../hooks/course/useCourse'
-import { useResponsive } from './ResponsiveLayout'
+import { useCourse } from '../../hooks/course/useCourseHook'
+import { useResponsive } from '../../hooks/layout/useResponsive'
 import Logo from './Logo'
 
 function Header({ 

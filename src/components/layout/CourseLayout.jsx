@@ -1,6 +1,6 @@
 import { Layout, Card, Text, Badge, ProgressBar, Divider } from '@shopify/polaris'
 import { ArrowLeftIcon, ArrowRightIcon, CheckIcon, HomeIcon } from '@shopify/polaris-icons'
-import { useCourse } from '../../hooks/course/useCourse'
+import { useCourse } from '../../hooks/course/useCourseHook'
 import MainLayout from './MainLayout'
 
 function CourseLayout({ children, currentPage, onNavigate }) {

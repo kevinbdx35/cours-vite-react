@@ -1,6 +1,6 @@
 import { Card, Text, Badge, ProgressBar } from '@shopify/polaris'
 import { CheckIcon, ClockIcon } from '@shopify/polaris-icons'
-import { useCourse } from '../../hooks/course/useCourse'
+import { useCourse } from '../../hooks/course/useCourseHook'
 
 function ModuleProgress() {
   const { 

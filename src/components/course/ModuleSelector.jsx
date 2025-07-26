@@ -1,5 +1,5 @@
 import { Card, Text, Badge } from '@shopify/polaris'
-import { useCourse } from '../../hooks/course/useCourse'
+import { useCourse } from '../../hooks/course/useCourseHook'
 
 function ModuleSelector() {
   const { 

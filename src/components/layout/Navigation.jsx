@@ -1,6 +1,6 @@
 import { Frame, TopBar, Navigation as PolarisNavigation } from '@shopify/polaris'
 import { HomeFilledIcon } from '@shopify/polaris-icons'
-import { useCourse } from '../../hooks/course/useCourse'
+import { useCourse } from '../../hooks/course/useCourseHook'
 
 function Navigation({ currentPage, onNavigate }) {
   const { getProgressPercentage } = useCourse()

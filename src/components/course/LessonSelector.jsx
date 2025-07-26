@@ -1,6 +1,6 @@
 import { Card, Text, Badge } from '@shopify/polaris'
 import { CheckIcon } from '@shopify/polaris-icons'
-import { useCourse } from '../../hooks/course/useCourse'
+import { useCourse } from '../../hooks/course/useCourseHook'
 
 function LessonSelector() {
   const { 

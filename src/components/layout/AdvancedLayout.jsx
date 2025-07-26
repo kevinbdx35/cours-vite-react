@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Frame, Loading, Toast, Modal } from '@shopify/polaris'
-import { useResponsive } from './ResponsiveLayout'
+import { useResponsive } from '../../hooks/layout/useResponsive'
 import Header from './Header'
 import MainLayout from './MainLayout'
 import CourseLayout from './CourseLayout'
@@ -150,51 +150,5 @@ function AdvancedLayout({
   )
 }
 
-// Hook pour contrôler le layout depuis n'importe quel composant
-export function useLayout() {
-  const [loading, setLoading] = useState(false)
-  const [toast, setToast] = useState(null)
-  const [modal, setModal] = useState(null)
-
-  const showToast = (content, options = {}) => {
-    setToast({
-      content,
-      onDismiss: () => setToast(null),
-      duration: 4000,
-      ...options
-    })
-  }
-
-  const showModal = (config) => {
-    setModal({
-      open: true,
-      onClose: () => setModal(null),
-      ...config
-    })
-  }
-
-  const hideModal = () => {
-    setModal(null)
-  }
-
-  const startLoading = () => setLoading(true)
-  const stopLoading = () => setLoading(false)
-
-  return {
-    loading,
-    toast,
-    modal,
-    showToast,
-    showModal,
-    hideModal,
-    startLoading,
-    stopLoading,
-    layoutProps: {
-      loading,
-      toast,
-      modal
-    }
-  }
-}
 
 export default AdvancedLayout

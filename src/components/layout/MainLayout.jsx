@@ -1,7 +1,7 @@
 import { Frame, TopBar, Navigation as PolarisNavigation, Toast } from '@shopify/polaris'
 import { HomeIcon, BookOpenIcon, SettingsIcon } from '@shopify/polaris-icons'
 import { useState } from 'react'
-import { useCourse } from '../../hooks/course/useCourse'
+import { useCourse } from '../../hooks/course/useCourseHook'
 import Logo from './Logo'
 
 function MainLayout({ children, currentPage, onNavigate, showNavigation = true }) {

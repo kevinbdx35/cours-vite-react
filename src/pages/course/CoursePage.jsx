@@ -1,8 +1,8 @@
 import { Layout, Card, Text, Badge, Button, Divider } from '@shopify/polaris'
 import { ArrowLeftIcon, ArrowRightIcon, CheckIcon, HomeIcon } from '@shopify/polaris-icons'
-import { useCourse } from '../../hooks/course/useCourse'
+import { useCourse } from '../../hooks/course/useCourseHook'
 import LessonContent from '../../components/course/LessonContent'
-import { Container, ResponsiveShow } from '../../components/layout/ResponsiveLayout'
+import { Container, ResponsiveShow } from '../../components/layout/ResponsiveUtils'
 
 function CoursePage({ onBackToHome }) {
   const { 

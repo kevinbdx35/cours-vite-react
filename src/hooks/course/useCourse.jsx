@@ -1,7 +1,6 @@
-import { createContext, useContext, useState } from 'react'
+import { useState } from 'react'
+import { CourseContext } from '../../contexts/CourseContext'
 import { courseModules } from '../../constants/courseData'
-
-const CourseContext = createContext()
 
 export function CourseProvider({ children }) {
   const [currentModuleIndex, setCurrentModuleIndex] = useState(0)
@@ -84,10 +83,4 @@ export function CourseProvider({ children }) {
   )
 }
 
-export function useCourse() {
-  const context = useContext(CourseContext)
-  if (!context) {
-    throw new Error('useCourse must be used within a CourseProvider')
-  }
-  return context
-}
+
