@@ -1,5 +1,4 @@
 import { Card, Text, Badge } from '@shopify/polaris'
-import { motion } from 'framer-motion'
 import { useCourse } from '../../hooks/course/useCourse'
 
 function ModuleSelector() {
@@ -7,8 +6,7 @@ function ModuleSelector() {
     courseModules, 
     currentModuleIndex, 
     navigateToLesson,
-    isLessonCompleted,
-    completedLessons 
+    isLessonCompleted
   } = useCourse()
 
   const getModuleProgress = (moduleIndex) => {

@@ -68,7 +68,7 @@ npm run dev
 - **[Vite](https://vitejs.dev/)** - Outillage frontend de nouvelle génération
 - **[React 18](https://reactjs.org/)** - Bibliothèque JavaScript pour construire des interfaces utilisateur
 - **[Shopify Polaris](https://polaris.shopify.com/)** - Système de design professionnel
-- **[Framer Motion](https://www.framer.com/motion/)** - Bibliothèque d'animation pour React
+- **CSS Animations** - Animations performantes avec CSS natif
 - **[React Markdown](https://remarkjs.github.io/react-markdown/)** - Composant Markdown pour React
 - **[React Syntax Highlighter](https://react-syntax-highlighter.github.io/react-syntax-highlighter/)** - Coloration syntaxique du code
 
@@ -130,7 +130,7 @@ Ce projet suit les principes établis de l'ingénierie logicielle :
 
 ## 🎭 Fonctionnalités d'Animation
 
-- Transitions de page avec Framer Motion
+- Transitions de page avec CSS natif
 - Effets de survol sur les éléments interactifs
 - Animations de progression
 - Micro-interactions pour une meilleure UX
@@ -183,7 +183,7 @@ Ce projet est sous licence MIT - voir le fichier LICENSE pour plus de détails.
 - [Documentation Vite](https://vitejs.dev/guide/)
 - [Documentation React](https://reactjs.org/docs/)
 - [Système de Design Polaris](https://polaris.shopify.com/)
-- [Documentation Framer Motion](https://www.framer.com/motion/)
+- [CSS Animations](https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Animations)
 - [Fonctionnalités JavaScript Modernes](https://developer.mozilla.org/fr/docs/Web/JavaScript)
 
 ## 💡 Conseils pour Réussir

@@ -1,22 +1,18 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { TopBar, TextField, Button, Popover, ActionList, Badge } from '@shopify/polaris'
 import { SearchIcon, BellIcon, QuestionCircleIcon, SettingsIcon } from '@shopify/polaris-icons'
-import { motion, AnimatePresence } from 'framer-motion'
 import { useCourse } from '../../hooks/course/useCourse'
 import { useResponsive } from './ResponsiveLayout'
 import Logo from './Logo'
 
 function Header({ 
   onNavigate, 
-  currentPage, 
   showSearch = true, 
   showNotifications = true,
   onToggleMobileNav 
 }) {
   const { 
     courseModules, 
-    currentModuleIndex, 
-    currentLessonIndex,
     getProgressPercentage,
     completedLessons 
   } = useCourse()

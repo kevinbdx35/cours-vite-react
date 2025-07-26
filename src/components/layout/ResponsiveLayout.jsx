@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
 
 // Hook personnalisé pour détecter la taille d'écran
 function useResponsive() {

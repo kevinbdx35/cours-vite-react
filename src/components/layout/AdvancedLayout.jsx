@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Frame, Loading, Toast, Modal } from '@shopify/polaris'
-import { motion, AnimatePresence } from 'framer-motion'
 import { useResponsive } from './ResponsiveLayout'
 import Header from './Header'
 import MainLayout from './MainLayout'
@@ -27,8 +26,8 @@ function AdvancedLayout({
   modal = null,
   ...layoutProps
 }) {
-  const { isMobile } = useResponsive()
-  const [isLoading, setIsLoading] = useState(loading)
+  useResponsive()
+  const [isLoading, _setIsLoading] = useState(loading)
 
   // Détection automatique du type de layout
   const getLayoutType = () => {

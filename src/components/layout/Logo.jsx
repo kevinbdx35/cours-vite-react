@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 
 function Logo({ size = 'medium' }) {
   const sizes = {
@@ -10,10 +9,8 @@ function Logo({ size = 'medium' }) {
   const currentSize = sizes[size]
 
   return (
-    <motion.div
-      whileHover={{ scale: 1.1, rotate: 5 }}
-      whileTap={{ scale: 0.95 }}
-      transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+    <div
+      className="hover-scale clickable"
       style={{
         display: 'flex',
         alignItems: 'center',
@@ -21,7 +18,7 @@ function Logo({ size = 'medium' }) {
         cursor: 'pointer'
       }}
     >
-      <motion.div
+      <div
         style={{
           ...currentSize,
           background: 'linear-gradient(135deg, #646cff 0%, #747bff 100%)',
@@ -34,19 +31,11 @@ function Logo({ size = 'medium' }) {
           fontSize: currentSize.fontSize,
           boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
         }}
-        animate={{ 
-          boxShadow: [
-            '0 2px 8px rgba(0,0,0,0.1)',
-            '0 4px 16px rgba(100, 108, 255, 0.3)',
-            '0 2px 8px rgba(0,0,0,0.1)'
-          ]
-        }}
-        transition={{ duration: 2, repeat: Infinity }}
       >
         ⚡
-      </motion.div>
+      </div>
       
-      <motion.div
+      <div
         style={{
           display: 'flex',
           flexDirection: 'column',
@@ -67,8 +56,8 @@ function Logo({ size = 'medium' }) {
         }}>
           Cours Interactif
         </span>
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   )
 }
 

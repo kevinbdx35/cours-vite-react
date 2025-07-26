@@ -2138,7 +2138,7 @@ Les tests garantissent que vos applications React fonctionnent correctement et r
           `,
           codeExample: `
 // Bon : Tester le comportement
-test('affiche un message de bienvenue quand l\'utilisateur se connecte', () => {
+test('affiche un message de bienvenue quand l\\'utilisateur se connecte', () => {
   render(<LoginForm />);
   
   fireEvent.change(screen.getByLabelText(/username/i), {
@@ -2153,7 +2153,7 @@ test('affiche un message de bienvenue quand l\'utilisateur se connecte', () => {
 });
 
 // Mauvais : Tester l'implémentation
-test('définit l\'état isLoggedIn à true', () => {
+test('définit l\\'état isLoggedIn à true', () => {
   const { result } = renderHook(() => useAuth());
   
   act(() => {

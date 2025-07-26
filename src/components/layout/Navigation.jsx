@@ -1,6 +1,5 @@
 import { Frame, TopBar, Navigation as PolarisNavigation } from '@shopify/polaris'
 import { HomeFilledIcon } from '@shopify/polaris-icons'
-import { motion } from 'framer-motion'
 import { useCourse } from '../../hooks/course/useCourse'
 
 function Navigation({ currentPage, onNavigate }) {

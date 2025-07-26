@@ -1,6 +1,5 @@
 import { Page, Layout, Card, Button, Text, Badge, Divider } from '@shopify/polaris'
 import { ClockIcon, PlayIcon } from '@shopify/polaris-icons'
-import { motion } from 'framer-motion'
 import { courseStats, courseModules } from '../../constants/courseData'
 import { useCourse } from '../../hooks/course/useCourse'
 import { Container, ResponsiveGrid } from '../../components/layout/ResponsiveLayout'

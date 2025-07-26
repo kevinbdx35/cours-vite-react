@@ -1,6 +1,6 @@
 import { Frame, TopBar, Navigation as PolarisNavigation, Toast } from '@shopify/polaris'
 import { HomeIcon, BookOpenIcon, SettingsIcon } from '@shopify/polaris-icons'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useCourse } from '../../hooks/course/useCourse'
 import Logo from './Logo'
 
@@ -8,7 +8,7 @@ function MainLayout({ children, currentPage, onNavigate, showNavigation = true }
   const { getProgressPercentage, courseModules, currentModuleIndex } = useCourse()
   const [mobileNavigationActive, setMobileNavigationActive] = useState(false)
   const [toastActive, setToastActive] = useState(false)
-  const [toastMessage, setToastMessage] = useState('')
+  const [toastMessage, _setToastMessage] = useState('')
 
 
   // Navigation items dynamiques

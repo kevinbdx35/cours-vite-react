@@ -1,5 +1,4 @@
 import { Card, Text } from '@shopify/polaris'
-import { motion } from 'framer-motion'
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism'
@@ -18,32 +17,12 @@ function LessonContent({ lesson }) {
 
   const { content } = lesson
   
-  const fadeInVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.4 }
-    }
-  }
-
-  const staggerChildren = {
-    visible: {
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  }
 
   return (
-    <motion.div
-      variants={staggerChildren}
-      initial="hidden"
-      animate="visible"
-    >
+    <div className="fade-in">
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         {content.theory && (
-          <motion.div variants={fadeInVariants}>
+          <div className="slide-in-bottom">
             <Card>
               <div style={{ padding: '1.5rem' }}>
                 <Text variant="headingMd" as="h3" style={{ marginBottom: '1rem' }}>
@@ -52,14 +31,10 @@ function LessonContent({ lesson }) {
                 <div className="lesson-theory">
                   <ReactMarkdown
                     components={{
-                      code({ node, inline, className, children, ...props }) {
+                      code({ inline, className, children, ...props }) {
                         const match = /language-(\w+)/.exec(className || '')
                         return !inline && match ? (
-                          <motion.div
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.2 }}
-                          >
+                          <div className="scale-in" style={{ animationDelay: '0.2s' }}>
                             <SyntaxHighlighter
                               style={tomorrow}
                               language={match[1]}
@@ -68,7 +43,7 @@ function LessonContent({ lesson }) {
                             >
                               {String(children).replace(/\n$/, '')}
                             </SyntaxHighlighter>
-                          </motion.div>
+                          </div>
                         ) : (
                           <code {...props}>
                             {children}
@@ -113,20 +88,19 @@ function LessonContent({ lesson }) {
                       },
                       blockquote({ children }) {
                         return (
-                          <motion.div
-                            initial={{ x: -20, opacity: 0 }}
-                            animate={{ x: 0, opacity: 1 }}
-                            transition={{ delay: 0.3 }}
+                          <div
+                            className="slide-in-left"
                             style={{
                               borderLeft: '4px solid #00a96e',
                               paddingLeft: '1rem',
                               margin: '1rem 0',
                               backgroundColor: '#f8fffe',
-                              padding: '1rem'
+                              padding: '1rem',
+                              animationDelay: '0.3s'
                             }}
                           >
                             {children}
-                          </motion.div>
+                          </div>
                         )
                       }
                     }}
@@ -136,21 +110,17 @@ function LessonContent({ lesson }) {
                 </div>
               </div>
             </Card>
-          </motion.div>
+          </div>
         )}
 
         {content.codeExample && (
-          <motion.div variants={fadeInVariants}>
+          <div className="slide-in-bottom">
             <Card>
               <div style={{ padding: '1.5rem' }}>
                 <Text variant="headingMd" as="h3" style={{ marginBottom: '1rem' }}>
                   💻 Exemple de Code
                 </Text>
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.1 }}
-                >
+                <div className="scale-in" style={{ animationDelay: '0.1s' }}>
                   <SyntaxHighlighter
                     language="javascript"
                     style={tomorrow}
@@ -161,14 +131,14 @@ function LessonContent({ lesson }) {
                   >
                     {content.codeExample}
                   </SyntaxHighlighter>
-                </motion.div>
+                </div>
               </div>
             </Card>
-          </motion.div>
+          </div>
         )}
 
         {content.interactive && (
-          <motion.div variants={fadeInVariants}>
+          <div className="slide-in-bottom">
             <Card>
               <div style={{ padding: '1.5rem' }}>
                 <Text variant="headingMd" as="h3" style={{ marginBottom: '1rem' }}>
@@ -177,11 +147,11 @@ function LessonContent({ lesson }) {
                 <InteractiveDemo interactive={content.interactive} />
               </div>
             </Card>
-          </motion.div>
+          </div>
         )}
 
         {lesson.type === 'practical' && !content.interactive && (
-          <motion.div variants={fadeInVariants}>
+          <div className="slide-in-bottom">
             <Card>
               <div style={{ padding: '1.5rem' }}>
                 <Text variant="headingMd" as="h3" style={{ marginBottom: '1rem' }}>
@@ -193,10 +163,10 @@ function LessonContent({ lesson }) {
                 </Text>
               </div>
             </Card>
-          </motion.div>
+          </div>
         )}
       </div>
-    </motion.div>
+    </div>
   )
 }
 

@@ -1,12 +1,9 @@
 import { useState } from 'react'
 import { Card, Text, Button, TextField, Banner } from '@shopify/polaris'
-import { motion, AnimatePresence } from 'framer-motion'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 function InteractiveDemo({ interactive }) {
-  const [activeDemo, setActiveDemo] = useState(null)
-  const [userCode, setUserCode] = useState('')
   const [terminalOutput, setTerminalOutput] = useState('')
 
   if (!interactive) {
@@ -19,14 +16,13 @@ function InteractiveDemo({ interactive }) {
 
   const renderFileExplorer = () => {
     const FileItem = ({ file, level = 0 }) => (
-      <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: level * 0.1 }}
+      <div
+        className="fade-in"
         style={{
           marginLeft: `${level * 20}px`,
           padding: '4px 8px',
-          cursor: file.type === 'file' ? 'pointer' : 'default'
+          cursor: file.type === 'file' ? 'pointer' : 'default',
+          animationDelay: `${level * 0.1}s`
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
@@ -38,7 +34,7 @@ function InteractiveDemo({ interactive }) {
         {file.children && file.children.map((child, index) => (
           <FileItem key={index} file={child} level={level + 1} />
         ))}
-      </motion.div>
+      </div>
     )
 
     return (
@@ -55,7 +51,7 @@ function InteractiveDemo({ interactive }) {
     )
   }
 
-  const renderCodeEditor = () => {
+  const RenderCodeEditor = () => {
     const [code, setCode] = useState(interactive.initialCode || '')
     const [showSolution, setShowSolution] = useState(false)
 
@@ -96,50 +92,37 @@ function InteractiveDemo({ interactive }) {
           </div>
         </Card>
 
-        <AnimatePresence>
-          {showSolution && interactive.solution && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <Card>
-                <div style={{ padding: '1rem' }}>
-                  <Text variant="bodyMd" fontWeight="semibold" style={{ marginBottom: '1rem' }}>
-                    ✅ Solution
-                  </Text>
-                  <SyntaxHighlighter
-                    language="javascript"
-                    style={tomorrow}
-                    customStyle={{ borderRadius: '8px', fontSize: '14px' }}
-                  >
-                    {interactive.solution}
-                  </SyntaxHighlighter>
-                </div>
-              </Card>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {showSolution && interactive.solution && (
+          <div className="slide-in-bottom">
+            <Card>
+              <div style={{ padding: '1rem' }}>
+                <Text variant="bodyMd" fontWeight="semibold" style={{ marginBottom: '1rem' }}>
+                  ✅ Solution
+                </Text>
+                <SyntaxHighlighter
+                  language="javascript"
+                  style={tomorrow}
+                  customStyle={{ borderRadius: '8px', fontSize: '14px' }}
+                >
+                  {interactive.solution}
+                </SyntaxHighlighter>
+              </div>
+            </Card>
+          </div>
+        )}
 
-        <AnimatePresence>
-          {terminalOutput && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-            >
-              <Banner status="success">
-                {terminalOutput}
-              </Banner>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {terminalOutput && (
+          <div className="slide-in-bottom">
+            <Banner status="success">
+              {terminalOutput}
+            </Banner>
+          </div>
+        )}
       </div>
     )
   }
 
-  const renderTerminalSimulator = () => {
+  const RenderTerminalSimulator = () => {
     const [currentCommandIndex, setCurrentCommandIndex] = useState(0)
     const commands = interactive.commands || []
 
@@ -157,42 +140,36 @@ function InteractiveDemo({ interactive }) {
             💻 Terminal Simulator
           </Text>
           
-          <AnimatePresence>
-            {commands.slice(0, currentCommandIndex + 1).map((cmd, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.5 }}
-                style={{ marginBottom: '0.5rem' }}
-              >
-                <div style={{ color: '#00ff00' }}>$ {cmd.command}</div>
-                <div style={{ color: '#cccccc', marginLeft: '1rem' }}>{cmd.output}</div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
+          {commands.slice(0, currentCommandIndex + 1).map((cmd, index) => (
+            <div
+              key={index}
+              className="fade-in"
+              style={{ 
+                marginBottom: '0.5rem',
+                animationDelay: `${index * 0.5}s`
+              }}
+            >
+              <div style={{ color: '#00ff00' }}>$ {cmd.command}</div>
+              <div style={{ color: '#cccccc', marginLeft: '1rem' }}>{cmd.output}</div>
+            </div>
+          ))}
 
           {currentCommandIndex < commands.length - 1 && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1 }}
-            >
+            <div className="fade-in" style={{ animationDelay: '1s' }}>
               <Button
                 size="slim"
                 onClick={() => setCurrentCommandIndex(prev => prev + 1)}
               >
                 Run Next Command
               </Button>
-            </motion.div>
+            </div>
           )}
         </div>
       </Card>
     )
   }
 
-  const renderComponentBuilder = () => {
-    const [selectedProps, setSelectedProps] = useState({})
+  const RenderComponentBuilder = () => {
     
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -231,11 +208,11 @@ function InteractiveDemo({ interactive }) {
       case 'file-explorer':
         return renderFileExplorer()
       case 'code-editor':
-        return renderCodeEditor()
+        return <RenderCodeEditor />
       case 'terminal-simulator':
-        return renderTerminalSimulator()
+        return <RenderTerminalSimulator />
       case 'component-builder':
-        return renderComponentBuilder()
+        return <RenderComponentBuilder />
       default:
         return (
           <Card>
@@ -250,13 +227,9 @@ function InteractiveDemo({ interactive }) {
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.3 }}
-    >
+    <div className="scale-in">
       {renderDemo()}
-    </motion.div>
+    </div>
   )
 }
 

@@ -1,5 +1,4 @@
 import { Card, Text, Button } from '@shopify/polaris'
-import { motion } from 'framer-motion'
 
 function ScrollTest() {
   const testItems = Array.from({ length: 20 }, (_, i) => ({
