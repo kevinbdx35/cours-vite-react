@@ -2,6 +2,9 @@
 
 Une plateforme d'apprentissage interactive conçue pour enseigner le développement web moderne en utilisant Vite et React. Ce cours pour débutants offre une expérience pratique avec des exemples concrets, des micro-animations et un design responsive.
 
+![vite+react](chemin/vers/image.jpg)
+
+
 ## ✨ Fonctionnalités
 
 - **📚 Apprentissage Interactif** : Leçons pratiques avec des exemples de code en temps réel
