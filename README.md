@@ -1,6 +1,8 @@
 # Cours Interactif Vite + React
 
 Une plateforme d'apprentissage interactive conçue pour enseigner le développement web moderne en utilisant Vite et React. Ce cours pour débutants offre une expérience pratique avec des exemples concrets, des micro-animations et un design responsive.
+
+
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/W7W61I0YBJ)
 
 ![vite+react](https://github.com/kevinbdx35/cours-vite-react/blob/main/img.png?raw=true)
